@@ -1,0 +1,46 @@
+# Laravel & PHP
+/.phpunit.cache
+/bootstrap/ssr
+/vendor
+.env
+.env.backup
+.env.production
+.phpactor.json
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+/auth.json
+
+# Storage & Keys
+/storage/*.key
+/storage/pail
+
+# Frontend & Vite Builds
+/node_modules
+/public/build
+/public/hot
+/public/storage
+npm-debug.log
+yarn-error.log
+dist/
+
+# Temporary & Export Files
+/public/*.xlsx
+/public/debug_payload.txt
+
+# IDE & Editor Files
+/.fleet
+/.idea
+/.nova
+/.vscode
+/.zed
+
+# Compiled Bytecode & Caches
+*.class
+*.py[cod]
+__pycache__/
+
+# Logs & System Files
+*.log
+.DS_Store
+Thumbs.db
