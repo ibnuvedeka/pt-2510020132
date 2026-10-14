@@ -1,0 +1,112 @@
+// SiNilai v0.4: memproses banyak mahasiswa dan mencetak rekap kelas.
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main() {
+    // Konstanta bobot
+    const double BOBOT_KEHADIRAN = 0.10;
+    const double BOBOT_MINGGUAN = 0.45;
+    const double BOBOT_UTS = 0.25;
+    const double BOBOT_UAS = 0.20;
+
+    int jumlah_mahasiswa = 0;
+    cout << "=== SiNilai v0.4 ===\n";
+    
+    // TODO 1: do-while supaya pertanyaan diulang selama jumlah_mahasiswa < 1.
+    do {
+        cout << "Jumlah mahasiswa (paling sedikit 1): ";
+        cin >> jumlah_mahasiswa;
+    } while (jumlah_mahasiswa < 1);
+
+    // TODO 2: deklarasi akumulator sebelum perulangan dimulai.
+    double total_nilai = 0;
+    int jumlah_lulus = 0;
+
+    // TODO 3: kepala for yang menghitung i dari 1 sampai jumlah_mahasiswa.
+    for (int i = 1; i <= jumlah_mahasiswa; i++) {
+        string nama;
+        string npm;
+        double kehadiran = 0, mingguan = 0, uts = 0, uas = 0;
+
+        cout << "\n--- Mahasiswa ke-" << i << " ---\n";
+        cout << "Nama       : ";
+        // cin >> ws membuang spasi dan Enter sisa sebelum nama dibaca
+        getline(cin >> ws, nama);
+        cout << "NPM        : ";
+        cin >> npm;
+        cout << "Kehadiran  : ";
+        cin >> kehadiran;
+        cout << "Mingguan   : ";
+        cin >> mingguan;
+        cout << "UTS        : ";
+        cin >> uts;
+        cout << "UAS        : ";
+        cin >> uas;
+
+        // Hitung nilai akhir, huruf mutu, keterangan, lulus (logika v0.3)
+        double nilai_akhir = (kehadiran * BOBOT_KEHADIRAN) + 
+                             (mingguan * BOBOT_MINGGUAN) + 
+                             (uts * BOBOT_UTS) + 
+                             (uas * BOBOT_UAS);
+
+        string huruf_mutu;
+        if (nilai_akhir >= 80) {
+            huruf_mutu = "A";
+        } else if (nilai_akhir >= 75) {
+            huruf_mutu = "B+";
+        } else if (nilai_akhir >= 70) {
+            huruf_mutu = "B";
+        } else if (nilai_akhir >= 65) {
+            huruf_mutu = "C+";
+        } else if (nilai_akhir >= 60) {
+            huruf_mutu = "C";
+        } else if (nilai_akhir >= 40) {
+            huruf_mutu = "D";
+        } else {
+            huruf_mutu = "E";
+        }
+
+        bool lulus = nilai_akhir >= 60;
+
+        string keterangan;
+        switch (huruf_mutu[0]) {
+            case 'A': keterangan = "Sangat baik"; break;
+            case 'B': keterangan = "Baik"; break;
+            case 'C': keterangan = "Cukup"; break;
+            case 'D': keterangan = "Kurang"; break;
+            case 'E': keterangan = "Sangat kurang"; break;
+            default:  keterangan = "Tidak dikenal";
+        }
+
+        // Cetak kartu nilai
+        cout << "\n--- Kartu Nilai Mahasiswa ---\n";
+        cout << "Nama         : " << nama << "\n";
+        cout << "NPM          : " << npm << "\n";
+        cout << "Nilai akhir  : " << nilai_akhir << "\n";
+        cout << "Huruf mutu   : " << huruf_mutu << "\n";
+        cout << "Keterangan   : " << keterangan << "\n";
+        cout << "Status       : ";
+        if (lulus) {
+            cout << "Lulus\n";
+        } else {
+            cout << "Belum lulus\n";
+        }
+
+        // TODO 4: tambahkan nilai akhir ke total nilai, dan tambah jumlah_lulus bila lulus.
+        total_nilai += nilai_akhir;
+        if (lulus) {
+            jumlah_lulus++;
+        }
+    }
+
+    // TODO 5: cetak rekap kelas dengan format sejajar.
+    cout << "\n=== Rekap Kelas ===\n";
+    cout << "Jumlah mahasiswa : " << jumlah_mahasiswa << "\n";
+    cout << "Lulus            : " << jumlah_lulus << "\n";
+    cout << "Belum lulus      : " << jumlah_mahasiswa - jumlah_lulus << "\n";
+    cout << "Rata-rata kelas  : " << total_nilai / jumlah_mahasiswa << "\n";
+
+    return 0;
+}

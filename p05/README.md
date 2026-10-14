@@ -1,0 +1,6 @@
+# Deklarasi AI
+
+**Label AI 1**
+* **Alat yang dipakai:** AI Gemini.
+* **Untuk apa:** AI digunakan sebagai pendamping untuk memastikan implementasi tiga struktur kendali perulangan berjalan tanpa kesalahan: menvalidasi logika *exit-controlled loop* `do-while` untuk pengecekan batas minimal jumlah mahasiswa, mengonstruksi *entry-controlled loop* `for` untuk iterasi data mahasiswa, dan memastikan penempatan ruang lingkup *scope* variabel akumulator (`total_nilai` dan `jumlah_lulus`) berada tepat di luar *body* perulangan agar tidak me-reset ke angka 0. 
+* **Cara memeriksanya:** Saya telah membaca baris kode untuk memahami alur inisialisasi variabel di luar perulangan, lalu melakukan kompilasi dengan setelan standar `g++ -std=c++20 -Wall -Wextra -Wpedantic` untuk memastikan tidak ada *warning* kebocoran *memory* maupun *fall-through*. Selanjutnya, program saya eksekusi lalu diuji ulang menggunakan *redirect* berkas masukan (`./sinilai_v04 < contoh_masukan.txt`), lalu mencocokkan keluran dari "Ibnu Muhammad" (Nilai: 83.975), "Budi Santoso" (Nilai: 67.75), "Rina Wati" (Nilai: 49.5), dan "Rekap kelas" (Rata-rata: 67.075) seratus persen presisi dengan tabel hasil yang dituntut modul.
