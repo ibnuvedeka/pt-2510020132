@@ -1,0 +1,6 @@
+# Deklarasi AI
+
+**Label AI 1**
+* **Alat yang dipakai:** AI Gemini.
+* **Untuk apa:** AI hanya digunakan untuk menjelaskan konsep dasar (seperti mekanisme kerja *stream buffer* `cin.fail()`, `cin.clear()`, `cin.ignore()`, serta fungsi manipulasi karakter `std::string` dari `<cctype>`) dan mengkritik/meninjau logika kode C++ yang telah Saya tulis guna memastikan pemahaman terhadap tipe data, validasi input, dan alur kontrol terbentuk secara utlak sesuai capaian pembelajaran.
+* **Cara memeriksanya:** Saya mempelajari penjelasan konsep yang diberikan, memperhitungkan poin-poin kritik untuk menyempurnakan struktur kode Saya, lalu mengompilasi berkas `sinilai_v06.cpp` dengan parameter ketat `g++ -std=c++20 -Wall -Wextra -Wpedantic -g`. Pengujian independen dilakukan menggunakan berkas `contoh_masukan.txt` untuk memastikan semua masukan jebakan (baris kosong, nama berangka, input non-numerik, dan nilai di luar rentang) ditolak dengan benar serta laporan rekap kelas akhir mencetak angka yang presisi.
