@@ -1,0 +1,35 @@
+=== SiNilai v0.7 ===
+Jumlah mahasiswa (paling sedikit 1): 
+--- Mahasiswa ke-1 dari 6 ---
+Nama       : NPM        : Kehadiran  : Mingguan  : UTS  : UAS  :   Ahmad Raffi           83.97  A  Lulus
+
+--- Mahasiswa ke-2 dari 6 ---
+Nama       : Nama tidak boleh kosong.
+Nama       : NPM        : Kehadiran  : Mingguan  : UTS  : UAS  :   Muhammad Ferdiansyah  67.75  C+ Lulus
+
+--- Mahasiswa ke-3 dari 6 ---
+Nama       : Nama tidak boleh mengandung angka.
+Nama       : NPM        : Kehadiran  : Mingguan  : UTS  : UAS  :   Reza Permana          49.50  D  Belum lulus
+
+--- Mahasiswa ke-4 dari 6 ---
+Nama       : NPM        : Kehadiran  : Mingguan  : Harus angka 0 sampai 100. Coba lagi: UTS  : UAS  :   Ibnu Muhammad         90.00  A  Lulus
+
+--- Mahasiswa ke-5 dari 6 ---
+Nama       : NPM        : Kehadiran  : Mingguan  : UTS  : Harus angka 0 sampai 100. Coba lagi: UAS  :   Ahmad Fahmin Nazhirin  71.00  B  Lulus
+
+--- Mahasiswa ke-6 dari 6 ---
+Nama       : NPM        : Kehadiran  : Mingguan  : UTS  : UAS  :   Dirga Raysa Hakim     25.75  E  Belum lulus
+
+=== Laporan Kelas ===
+Jumlah mahasiswa : 6
+Lulus            : 4
+Belum lulus      : 2
+Rata-rata kelas  : 64.66
+Tertinggi        : Ibnu Muhammad (90.00)
+
+Sebaran huruf mutu
+A ## 2
+B # 1
+C # 1
+D # 1
+E # 1
