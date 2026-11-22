@@ -196,11 +196,17 @@ int main() {
     cout << "\nSebaran huruf mutu\n";
     for (char huruf = 'A'; huruf <= 'E'; huruf++) {
         int banyak = 0;
-        if (huruf == 'A') banyak = jumlah_a;
-        else if (huruf == 'B') banyak = jumlah_b;
-        else if (huruf == 'C') banyak = jumlah_c;
-        else if (huruf == 'D') banyak = jumlah_d;
-        else if (huruf == 'E') banyak = jumlah_e;
+        if (huruf == 'A') {
+            banyak = jumlah_a;
+        } else if (huruf == 'B') {
+            banyak = jumlah_b;
+        } else if (huruf == 'C') {
+            banyak = jumlah_c;
+        } else if (huruf == 'D') {
+            banyak = jumlah_d;
+        } else if (huruf == 'E') {
+            banyak = jumlah_e;
+        }
 
         cout << huruf << " ";
         for (int j = 1; j <= banyak; j++) {
