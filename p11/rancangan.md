@@ -32,17 +32,50 @@ Format satu baris berkas (tugas besar): `-` *(tidak dipakai pada Pertemuan 11)*
 
 ## 3. Bagan Hierarki
 
-```text
-main (Tingkat 0)
-├── bacaBulat (Tingkat 1)
-├── tampilkanCucian (Tingkat 1)
-├── terimaCucian (Tingkat 1)
-│   └── bacaBerat (Tingkat 2)
-├── tandaiSelesai (Tingkat 1)
-│   ├── tampilkanCucian (Tingkat 2 - dipanggil dari dua tempat)
-│   └── bacaBulat (Tingkat 2 - dipanggil dari dua tempat)
-├── ambilCucian (Tingkat 1)
-│   ├── tampilkanCucian (Tingkat 2 - dipanggil dari dua tempat)
-│   └── bacaBulat (Tingkat 2 - dipanggil dari dua tempat)
-└── cetakRekap (Tingkat 1)
-    └── cariIndeksTerberat (Tingkat 2)
+    main (Tingkat 0)
+    ├── bacaBulat (Tingkat 1)
+    ├── tampilkanCucian (Tingkat 1)
+    ├── terimaCucian (Tingkat 1)
+    │   └── bacaBerat (Tingkat 2)
+    ├── tandaiSelesai (Tingkat 1)
+    │   ├── tampilkanCucian (Tingkat 2 - dipanggil dari dua tempat)
+    │   └── bacaBulat (Tingkat 2 - dipanggil dari dua tempat)
+    ├── ambilCucian (Tingkat 1)
+    │   ├── tampilkanCucian (Tingkat 2 - dipanggil dari dua tempat)
+    │   └── bacaBulat (Tingkat 2 - dipanggil dari dua tempat)
+    └── cetakRekap (Tingkat 1)
+        └── cariIndeksTerberat (Tingkat 2)
+
+---
+
+## 4. Tabel Fungsi
+
+| Fungsi | Tugas (satu kalimat) | Parameter (`const`?) | Kembalian | Tahap |
+| :--- | :--- | :--- | :--- | :--- |
+| `bacaBulat` | Membaca masukan bilangan bulat dalam rentang batas bawah hingga batas atas sampai valid. | `string label, int bawah, int atas` | `int` | 2 |
+| `bacaBerat` | Membaca masukan bilangan desimal positif untuk berat cucian sampai valid. | `string label` | `double` | 2 |
+| `tampilkanCucian` | Mencetak daftar seluruh cucian lengkap dengan nomor urut, nama pelanggan, berat, serta status pengerjaannya. | `const string nama[], const double berat[], const int status[], int jumlah` | `void` | 2 |
+| `cariIndeksTerberat` | Mengembalikan indeks cucian dengan bobot kilogram paling besar dari seluruh data yang tersimpan. | `const double berat[], int jumlah` | `int` | 2 |
+| `cetakRekap` | Menampilkan ringkasan total berat, total pendapatan harian, serta pelanggan dengan cucian terberat. | `const string nama[], const double berat[], const int status[], int jumlah` | `void` | 2 |
+| `terimaCucian` | Menambahkan data cucian baru ke posisi terakhir larik sejajar apabila kapasitas masih tersedia. | `string nama[], double berat[], int status[], int &jumlah` | `void` | 3 |
+| `tandaiSelesai` | Mengubah status cucian yang dipilih petugas dari diproses menjadi selesai. | `const string nama[], const double berat[], int status[], int jumlah` | `void` | 3 |
+| `ambilCucian` | Mengubah status cucian yang sudah selesai menjadi telah diambil oleh pelanggan. | `const string nama[], const double berat[], int status[], int jumlah` | `void` | 3 |
+
+---
+
+## 5. Rencana Tahap
+
+| Tahap | Fungsi yang Dirinci | Yang Sudah Bisa Dicoba Setelah Tahap Ini |
+| :--- | :--- | :--- |
+| 1 | `main` dan semua *stub* (8 fungsi mencetak `[belum dirinci] <namaFungsi>`) | Menu berulang (`1`–`5` dan `0` selesai) dapat dipilih, setiap pilihan memanggil fungsi sesuai bagan dan mencetak nama fungsinya |
+| 2 | `bacaBulat`, `bacaBerat`, `tampilkanCucian`, `cariIndeksTerberat`, `cetakRekap` | Validasi masukan angka bulat maupun desimal berjalan aman tanpa *infinite loop*, serta daftar cucian dan rekap harian tampil tanpa mengubah larik |
+| 3 | `terimaCucian`, `tandaiSelesai`, `ambilCucian` | Seluruh transaksi penerimaan cucian baru, pembaruan status menjadi selesai, dan pengambilan cucian berjalan penuh serta mengubah isi larik sejajar |
+
+---
+
+## 6. Uji yang Direncanakan
+
+1. **Jalan normal (terima cucian dan hitung rekap):** Memilih menu `2` (Terima cucian masuk) untuk menambahkan pelanggan `"Siti"` seberat `4.0` kg dan `"Rizky"` seberat `6.5` kg. Saat menu `5` (Rekap harian) dipilih, program menampilkan jumlah transaksi `2`, total berat `10.5 kg`, total pendapatan `Rp73500`, dan cucian terberat `Rizky (6.5 kg)`.
+2. **Masukan salah tipe dan luar rentang:** Mengetik `"abc"` pada prompt pilihan menu utama, atau mengetik `"xyz"` maupun nomor urut `99` pada menu `3` (Tandai cucian selesai) saat data baru berjumlah `2`. Program tidak terjebak *infinite loop*, menampilkan peringatan validasi, dan meminta masukan ulang hingga valid.
+3. **Kondisi batas (data kosong dan berat nol/negatif):** Saat program baru dijalankan (`jumlah = 0`), memilih menu `1` (Lihat daftar cucian) dan menu `5` (Rekap harian) menampilkan pesan `"Belum ada data cucian."` tanpa *crash*; saat memilih menu `2` dan memasukkan berat `0` atau `-2`, program menolak masukan dan meminta bilangan desimal lebih dari `0`.
+4. **Pembuktian perubahan isi larik sejajar:** Memilih menu `3` (Tandai cucian selesai) untuk cucian nomor `1` (`"Siti"`), kemudian memilih menu `4` (Ambil cucian) untuk nomor `1` yang sama. Saat menu `1` (Lihat daftar cucian) dibuka kembali, status pada indeks `0` terbukti berubah bertahap dari `Diproses` menjadi `Selesai` lalu `Diambil` dengan tagihan `Rp28000`, sementara data `nama[0]` dan `berat[0]` tetap utuh.
